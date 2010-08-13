@@ -1,0 +1,136 @@
+<html>
+  <head>
+    <title>Coverage Report</title>
+    <link href="<%= File.join(CoverMe.config.project.root, 'coverage', "report.css?#{rand}") %>" media="screen" rel="stylesheet" type="text/css" />
+    <link href="<%= File.join(CoverMe.config.project.root, 'coverage', "index.css?#{rand}") %>" media="screen" rel="stylesheet" type="text/css" />
+    <script src='<%= File.join(CoverMe.config.project.root, 'coverage', "jquery.js?#{rand}") %>'></script>
+    <script src='<%= File.join(CoverMe.config.project.root, 'coverage', "jquery.tablesorter.js?#{rand}") %>'></script>
+    <script>
+      $(function() {
+        
+        function filterByPercent() {
+          var p = $('#filter_by_percent').val();
+          if (p == 0 ) {
+            $('#main tbody tr').show();
+          } else if (p == 10) {
+            $('#main tbody tr.row').show();
+            $('#main tbody tr.10').hide();
+          } else if (p == 100) {
+            $('#main tbody tr.row').hide();
+            $('#main tbody tr.10').show();
+          } else {
+            $('#main tbody tr.row').hide();
+            var x = 0;
+            while (x < p) {
+              $('#main tbody tr.' + x).show();
+              x++;
+            }
+          }
+        }
+        
+        function filterByName(name) {
+          $('#main tbody tr:visible').each(function() {
+            if ($(this).attr('id').indexOf(name) != -1) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        }
+        
+        $('#filter_by_percent').change(function(e) {
+          filterByPercent();
+          filterByName($('#filter_by_name').val());
+        });
+      
+        $('#filter_by_name').keyup(function(e) {
+          filterByPercent();
+          filterByName($(this).val());
+        });
+        
+        $("#main").tablesorter(); 
+      });
+    </script>
+  </head>
+  <body>
+    <div id='big_total' class='<%= index.percent_tested < 100 ? 'miss' : 'hit' %>'><%= index.percent_tested %>%</div>
+    
+    <h1>Coverage Report</h1>
+    
+    <div id='filters'>
+      Filter:
+      <input type='text' id='filter_by_name'>
+      
+      Code Coverage Threshold:
+      <select id='filter_by_percent'>
+        <option value='0'>Show All</option>
+        <option value='1'><= 10% Coverage</option>
+        <option value='2'><= 20% Coverage</option>
+        <option value='3'><= 30% Coverage</option>
+        <option value='4'><= 40% Coverage</option>
+        <option value='5'><= 50% Coverage</option>
+        <option value='6'><= 60% Coverage</option>
+        <option value='7'><= 70% Coverage</option>
+        <option value='8'><= 80% Coverage</option>
+        <option value='9'><= 90% Coverage</option>
+        <option value='10'>< 100% Coverage</option>
+        <option value='100'>= 100% Coverage</option>
+      </select>
+    </div>
+
+    <table cellpadding='0' cellspacing='1'>
+      <tr>
+        <th>Legend</th>
+      </tr>
+      <tr>
+        <td class='hit'>This file was tested 100%!</td>
+      </tr>
+      <tr>
+        <td class='near'>This file was tested >90%!</td>
+      </tr>
+      <tr>
+        <td class='miss'>This file was is tested nearly enough!</td>
+      </tr>
+    </table>
+    
+    <div>&nbsp;</div>
+
+    <table cellpadding="0" cellspacing='1' id='main'>
+      <thead>
+        <tr class='header'>
+          <th>File</th>
+          <th>Lines</th>
+          <th>Lines Of Code</th>
+          <th>Tested %</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% index.reports.sort.each do |report| %>
+          <tr class='row <%= report.proximity %> <%= (report.executed_percent / 10).to_i %>' id='<%= report.filename %>'>
+            <td>
+              <a href="<%= report.filename + '.html' %>"><%= report.filename %></a>
+            </td>
+            <td>
+              <%= report.lines %>
+            </td>
+            <td>
+              <%= report.lines_of_code %>
+            </td>
+            <td>
+              <%= report.executed_percent %>%
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      
+      <tr class='header'>
+        <th>Total</th>
+        <th><%= index.total_lines %></th>
+        <th><%= index.total_loc %></th>
+        <th><%= index.percent_tested %>%</th>
+      </tr>
+    </table>
+    <p>Generated on: <%= Time.now %></p>
+  </body>
+</html>

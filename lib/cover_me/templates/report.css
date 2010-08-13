@@ -1,0 +1,97 @@
+body {
+  font-family: Verdana, Helvetica, Arial, Sans-Serif;
+  font-size: 12px;
+  color: #4C4C4C;
+  background-color: #F4F2ED;
+  padding: 1em;
+}
+
+pre, code {
+  color: #000000;
+  font-family: "Bitstream Vera Sans Mono","Monaco","Courier New",monospace;
+  font-size: 95%;
+  line-height: 1.3em;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0em 0em 1em 0em;
+  color: #666666;
+}
+
+h1 { 
+  display: block;
+  font-size: 2em;
+  letter-spacing: -1px;
+}
+
+h1 a:visited{
+  color: 666666;
+}
+
+h2 {
+  margin-top: -1em;	
+}
+
+.hit {
+  background-color: #BED2BE;
+  color: black;
+}
+
+.never {
+  background-color: #E0DEDB;
+  color: black;
+}
+
+.miss {
+  background-color: #CE8B8C;
+  color: black;
+}
+
+.line_number {
+  color: black;
+  font-weight: normal;
+  width: 1px;
+}
+
+.code_line {
+  padding-left: 5px;
+}
+
+table {
+  width: 100%;
+  border: 2px solid #999;
+}
+
+td {
+  padding: 2px;
+}
+
+tr {
+  font-size: 14px;
+}
+
+th {
+  padding: 2px;
+  background-color: #999;
+  color: white;
+  font-size: 12px;
+  text-align: left;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#content .side_by_side {
+  width: 50%;
+  overflow: auto;
+  float: left;
+}
+
+#toggle_test_file {
+  color: #666666;
+}

@@ -1,0 +1,3 @@
+Cover Me - Code Coverage for Ruby 1.9
+========================================================================
+cover_me was developed by: markbates

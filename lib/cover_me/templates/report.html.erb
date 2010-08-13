@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title><%= report.filename %></title>
+    <link href="<%= File.join(CoverMe.config.project.root, 'coverage', "report.css?#{rand}") %>" media="screen" rel="stylesheet" type="text/css" />
+    <script src='<%= File.join(CoverMe.config.project.root, 'coverage', "jquery.js?#{rand}") %>'></script>
+    <script>
+      $(function() {
+
+        $('#toggle_test_file').click(function(e) {
+          e.preventDefault();
+          if ($('#main_file').hasClass('side_by_side')) {
+            $('#main_file').removeClass('side_by_side');
+          } else {
+            $('#main_file').addClass('side_by_side');
+          }
+        
+          $('#test_file').toggle();
+        });
+
+        $('#test_file').hide();
+        
+      });
+    </script>
+  </head>
+  <body>
+    <h1><a href="<%= File.join(CoverMe.config.project.root, 'coverage', "index.html") %>">Coverage Report</a></h1>
+    
+    <table cellpadding='0' cellspacing='1'>
+      <tr class='header'>
+        <th>File</th>
+        <th>Lines</th>
+        <th>Lines Of Code</th>
+        <th>Tested %</th>
+      </tr>
+      <tr valign='top'>
+        <td>
+          <%= report.filename %>
+          <% if report.test_file_name %>
+            <br />
+            <a href='#' id='toggle_test_file'><%= report.short_test_file_name %></a>
+          <% end %>
+        </td>
+        <td><%= report.lines %></td>
+        <td><%= report.lines_of_code %></td>
+        <td><%= report.executed_percent %>%</td>
+      </tr>
+    </table>
+
+    <div>&nbsp;</div>
+    
+    <table cellpadding='0' cellspacing='1'>
+      <tr>
+        <th>Legend</th>
+      </tr>
+      <tr>
+        <td class='hit'>This line was executed.</td>
+      </tr>
+      <tr>
+        <td class='miss'>This line was not executed!</td>
+      </tr>
+      <tr>
+        <td class='never'>This line doesn't matter.</td>
+      </tr>
+    </table>
+    
+    <div>&nbsp;</div>
+
+    <div id='content'>
+      <div id='main_file'>
+        <table id='main'>
+          <% report.source.zip(report.coverage).each_with_index do |(line, cov), i| %>
+            <tr class="<%= report.hit_type(cov) %>" <%= cov ? "data-hits='\#{cov}'" : '' %>"">
+              <td class='line_number'><%= i + 1 %></td>
+              <td class='code_line'>
+                <pre><%= line.chomp %></pre>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <% if report.test_file_name %>
+        <div id='test_file' class='side_by_side'>
+          <table id='test'>
+            <% i = 1 %>
+            <% report.test_file.each_line do |line| %>
+              <tr class="never">
+                <td class='line_number'><%= i %></td>
+                <td class='code_line'>
+                  <pre><%= line.chomp %></pre>
+                </td>
+              </tr>
+              <% i += 1 %>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
+    </div>
+    
+    <p>Generated on: <%= Time.now %></p>
+  </body>
+</html>

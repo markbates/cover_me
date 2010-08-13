@@ -1,0 +1,48 @@
+.near {
+  background-color: #E0DEDB;
+  color: black;
+}
+
+.near a {
+  color: black;
+}
+
+.near a:visited {
+  color: black;
+}
+
+.miss {
+  font-weight: normal;
+}
+
+a {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+.headerSortUp:after {
+  content: "\25BC";
+/*  margin-left: 1em;*/
+}
+
+.headerSortDown:after {
+  content: "\25B2";
+  
+/*  margin-left: 1em;*/
+}
+
+#filters {
+  padding-bottom: 20px;
+  font-size: 16px;
+}
+
+#big_total {
+  float: right;
+  border: 3px solid #999;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
