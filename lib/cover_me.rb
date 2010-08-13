@@ -4,7 +4,6 @@ require 'coverage'
 require 'erb'
 require 'fileutils'
 require 'configatron'
-# require 'mark_facets'
 
 module CoverMe
 end

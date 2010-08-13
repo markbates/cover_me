@@ -2,12 +2,22 @@ module CoverMe
   
   class << self
     
+    # Yields up a configuration object when given a block. 
+    # Without a block it just returns the configuration object.
+    # Uses Configatron under the covers.
+    # 
+    # Example:
+    #   CoverMe.config do |c|
+    #     c.foo = :bar
+    #   end
+    # 
+    #   CoverMe.config.foo # => :bar
     def config(&block)
       yield configatron.cover_me if block_given?
       configatron.cover_me
     end
     
-    def set_defaults
+    def set_defaults # :nodoc:
       CoverMe.config do |c|
         c.project.set_default(:root, Configatron::Delayed.new {Rails.root.to_s})
         c.set_default(:file_pattern, Configatron::Delayed.new do

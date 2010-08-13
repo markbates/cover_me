@@ -1,5 +1,5 @@
 require 'hashie'
-class Hash
+class Hash # :nodoc:
   
   def to_mash
     h = self.dup
