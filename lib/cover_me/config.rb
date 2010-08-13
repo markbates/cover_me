@@ -14,7 +14,7 @@ module CoverMe
           /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/ix
         end)
         c.set_default(:formatter, Configatron::Delayed.new {CoverMe::HtmlFormatter})
-        c.set_default(:at_exit, Configatron::Dynamic.new {
+        c.set_default(:at_exit, Proc.new {
           if CoverMe.config.formatter == CoverMe::HtmlFormatter
             index = File.join(CoverMe.config.html_formatter.output_path, 'index.html')
             if File.exists?(index)

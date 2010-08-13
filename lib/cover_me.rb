@@ -26,6 +26,6 @@ end
 
   at_exit do
     CoverMe::Processor.new(Coverage.result).process!
-    CoverMe.config.at_exit
+    CoverMe.config.at_exit.call
   end
 # end

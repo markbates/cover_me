@@ -14,6 +14,22 @@ While working on a Ruby 1.9/Rails 3 project, and loving everything about it (exc
 
 After spending a morning playing with it, I was quickly able to grow the idea into something useful for the project. Later that day the company I was consulting for ("BiddingForGood.com":http://www.biddingforgood.com), and in particular their chief architect, Stuart Garner, told me to take a day or two and clean it up and release it for the world to use, and so here it is.
 
+h2. Features
+
+h3. Index Page
+
+* Sortable column headers (File, Lines, Lines of Code, Tested %).
+* Searching/filtering by file name.
+* Filtering by coverage percent.
+* Color coded list of files to quickly see which ones are 100% covered, > 90% covered, or less than 90% covered.
+* Large color coded average coverage percent, for quick reference.
+
+h3. Detail Page
+
+* Line by line coverage report
+* Color coded lines to quickly see which lines where executed and which ones were not.
+* Side by side viewing with the corresponding test/spec file (if one exists).
+
 h2. Use
 
 CoverMe is pretty easy to use, and has been tested with Ruby 1.9.2 and Rails 3.rc1. First, add CoverMe to your Gemfile:
@@ -47,5 +63,18 @@ CoverMe.config do |c|
   
   # what files are you interested in coverage for:
   c.file_pattern # => /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/ix (default)
+  
+  # where do you want the HTML generated:
+  c.html_formatter.output_path # => File.join(CoverMe.config.project.root, 'coverage') (default)
+  
+  # what do you want to happen when it finishes:
+  c.at_exit # => Proc.new {
+    if CoverMe.config.formatter == CoverMe::HtmlFormatter
+      index = File.join(CoverMe.config.html_formatter.output_path, 'index.html')
+      if File.exists?(index)
+        `open #{index}`
+      end
+    end
+  } (default)
 end
 </code></pre>
