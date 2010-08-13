@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cover_me}
-  s.version = "1.0.0.pre.20100813121037"
+  s.version = "1.0.0.pre.20100813121215"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["markbates"]
   s.date = %q{2010-08-13}
-  s.description = %q{cover_me was developed by: markbates}
+  s.description = %q{CoverMe - Code Coverage for Ruby 1.9}
   s.email = %q{mark+cover_me@markbates.com}
   s.extra_rdoc_files = ["README", "LICENSE"]
   s.files = ["lib/cover_me/config.rb", "lib/cover_me/formatter.rb", "lib/cover_me/hash.rb", "lib/cover_me/html_formatter.rb", "lib/cover_me/index.rb", "lib/cover_me/processor.rb", "lib/cover_me/report.rb", "lib/cover_me/templates/index.css", "lib/cover_me/templates/index.html.erb", "lib/cover_me/templates/jquery.js", "lib/cover_me/templates/jquery.tablesorter.js", "lib/cover_me/templates/report.css", "lib/cover_me/templates/report.html.erb", "lib/cover_me.rb", "README", "LICENSE"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{magrathea}
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{cover_me}
+  s.summary = %q{CoverMe - Code Coverage for Ruby 1.9}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION

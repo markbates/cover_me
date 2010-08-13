@@ -17,6 +17,8 @@ Bundler.require
 Gemstub.test_framework = :rspec
 
 Gemstub.gem_spec do |s|
+  s.summary = 'CoverMe - Code Coverage for Ruby 1.9'
+  s.description = s.summary
   s.version = '1.0.0.pre'
   s.rubyforge_project = 'magrathea'
   s.add_dependency('configatron')
