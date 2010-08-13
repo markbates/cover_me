@@ -1,2 +1,31 @@
-=Cover Me - Code Coverage for Ruby 1.9
+=CoverMe - Code Coverage for Ruby 1.9
 
+Ruby 1.9(.2) is an amazing language to develop applications in. It's faster, more powerful, cleaner, and a huge improvement over Ruby 1.8.x. Because of those reasons every Ruby developer should move to this exciting new version of our language.
+
+When making a move of this size it's important to have the right tools to help us along. Unfortunately, one of the most useful tools as a Ruby developer, RCov, does not work with Ruby 1.9.
+
+RCov, for those unfamiliar analyzes your code and tells you which part of your code was not executed. This is INCREDIBLY useful when hooked up to your test suite. While, it's not the only metric you should use when determining how good your test coverage it, it certainly is a great first step to point out exactly which parts of your code haven't been touched at all!
+
+Enter CoverMe.
+
+==History
+
+While working on a Ruby 1.9/Rails 3 project, and loving everything about it (except for the lack of RCov), I came across a "post":http://engineering.attinteractive.com/2010/08/code-coverage-in-ruby-1-9/ by Aaron Patterson (of Nokogiri fame). In this post he quickly outlined a very basic coverage tool using the new built-in Coverage module in Ruby 1.9.
+
+After spending a morning playing with it, I was quickly able to grow the idea into something useful for the project. Later that day the company I was consulting for ("BiddingForGood.com":http://www.biddingforgood.com), and in particular their chief architect, Stuart Garner, told me to take a day or two and clean it up and release it for the world to use, and so here it is.
+
+===Use
+
+CoverMe is pretty easy to use, and has been tested with Ruby 1.9.2 and Rails 3.rc1. First, add CoverMe to your Gemfile:
+
+gem 'cover_me', :require => false, :group => :test
+
+Now make sure to install the gem with Bundler:
+
+$ bundle install
+
+All that's left now is to require it as the first line of your 'spec_helper.rb' or 'test_helper.rb' file:
+
+require 'cover_me'
+
+Now the next time your run your test suite it will create a series of HTML files in the _coverage_ folder at the root of your project. Open _coverage/index.html_ and you're off and running.
