@@ -4,6 +4,7 @@ require 'coverage'
 require 'erb'
 require 'fileutils'
 require 'configatron'
+require 'hashie'
 
 module CoverMe
 end

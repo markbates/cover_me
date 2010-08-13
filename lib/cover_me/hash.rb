@@ -1,4 +1,3 @@
-require 'hashie'
 class Hash # :nodoc:
   
   def to_mash
