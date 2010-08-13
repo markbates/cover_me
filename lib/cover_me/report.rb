@@ -45,11 +45,12 @@ class CoverMe::Report
   def test_file_name
     unless @test_file_name
       self.filename.match(/\/?(.+)\.rb/ix)
-      path = File.join(CoverMe.config.project.root, 'spec', "#{$1}_spec.rb")
+      name = $1.gsub(/^app/, '')
+      path = File.join(CoverMe.config.project.root, 'spec', "#{name}_spec.rb")
       if File.exists?(path)
         @test_file_name = path
       else
-        path = File.join(CoverMe.config.project.root, 'test', "#{$1}_test.rb")
+        path = File.join(CoverMe.config.project.root, 'test', "#{name}_test.rb")
         if File.exists?(path)
           @test_file_name = path
         end

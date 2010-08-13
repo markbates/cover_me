@@ -9,7 +9,7 @@ module CoverMe
     
     def set_defaults
       CoverMe.config do |c|
-        c.project.set_default(:root, Configatron::Delayed.new {Rails.root})
+        c.project.set_default(:root, Configatron::Delayed.new {Rails.root.to_s})
         c.set_default(:file_pattern, Configatron::Delayed.new do
           /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/ix
         end)
