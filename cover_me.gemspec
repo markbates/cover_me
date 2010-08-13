@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cover_me}
-  s.version = "1.0.0.pre.20100813121215"
+  s.version = "1.0.0.pre1.20100813121521"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["markbates"]
