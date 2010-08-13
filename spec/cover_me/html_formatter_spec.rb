@@ -4,11 +4,6 @@ describe CoverMe::HtmlFormatter do
   
   before(:each) do
     @formatter = CoverMe::HtmlFormatter.new
-    FileUtils.rm_rf(File.join(CoverMe.config.html_formatter.output_path))
-  end
-  
-  after(:each) do
-    FileUtils.rm_rf(File.join(CoverMe.config.html_formatter.output_path))
   end
   
   describe "format_report" do

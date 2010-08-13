@@ -16,11 +16,11 @@ Rspec.configure do |config|
   end
   
   config.before(:each) do
-    
+    FileUtils.rm_rf(File.join(CoverMe.config.html_formatter.output_path))
   end
   
   config.after(:each) do
-    
+    FileUtils.rm_rf(File.join(CoverMe.config.html_formatter.output_path))
   end
   
 end
