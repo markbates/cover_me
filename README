@@ -14,7 +14,7 @@ While working on a Ruby 1.9/Rails 3 project, and loving everything about it (exc
 
 After spending a morning playing with it, I was quickly able to grow the idea into something useful for the project. Later that day the company I was consulting for ("BiddingForGood.com":http://www.biddingforgood.com), and in particular their chief architect, Stuart Garner, told me to take a day or two and clean it up and release it for the world to use, and so here it is.
 
-===Use
+==Use
 
 CoverMe is pretty easy to use, and has been tested with Ruby 1.9.2 and Rails 3.rc1. First, add CoverMe to your Gemfile:
 
@@ -29,3 +29,16 @@ All that's left now is to require it as the first line of your 'spec_helper.rb' 
 require 'cover_me'
 
 Now the next time your run your test suite it will create a series of HTML files in the _coverage_ folder at the root of your project. Open _coverage/index.html_ and you're off and running.
+
+==Configuration
+
+CoverMe is easily configurable, under the covers it uses the "Configatron":http://github.com/markbates/configatron library. Here are a few quick config options you might want to play with:
+
+CoverMe.config do |c|
+  # where is your project's root:
+  c.project.root # => "Rails.root" (default)
+  
+  # what files are you interested in coverage for:
+  c.file_pattern # => /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/ix (default)
+end
+
