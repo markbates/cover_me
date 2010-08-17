@@ -34,7 +34,7 @@ After spending a morning playing with it, I was quickly able to grow the idea in
 
 CoverMe is pretty easy to use, and has been tested with Ruby 1.9.2 and Rails 3.rc1. First, add CoverMe to your Gemfile:
 
-  gem 'cover_me', '>= 1.0.0.pre1', :require => false, :group => :test
+  gem 'cover_me', '>= 1.0.0.pre2', :require => false, :group => :test
 
 Now make sure to install the gem with Bundler:
 
