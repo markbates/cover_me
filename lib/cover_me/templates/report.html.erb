@@ -19,6 +19,22 @@
 
         $('#test_file').hide();
         
+        function cleanString(str) {
+          return $.trim(str.replace(/<[^(<|>)]+>/gi, ''));
+        }
+        
+        $('.line_number').hover(function() {
+          $(this).attr('title', 'Line: ' + cleanString($(this).html()));
+        });
+        
+        $('.hit_number').hover(function() {
+          $(this).attr('title', 'Execution Count: ' + cleanString($(this).html()));
+        });
+        
+        $('.code_line').hover(function() {
+          $(this).attr('title', cleanString($(this).html()));
+        });
+        
       });
     </script>
   </head>
@@ -74,6 +90,7 @@
               <td class='code_line'>
                 <pre><%= line.chomp %></pre>
               </td>
+              <td class='hit_number'><%= cov %></td>
             </tr>
           <% end %>
         </table>
