@@ -23,9 +23,18 @@ describe CoverMe::Index do
     end
     
   end
-  
-  it "should return an average percent tested" do
-    @index.percent_tested.should == 79.15
+
+  describe "percent_tested" do
+    
+    it "should return an average percent tested" do
+      @index.percent_tested.should == 79.15
+    end
+    
+    it "should handle when there are no reports" do
+      index = CoverMe::Index.new
+      index.percent_tested.should == 0
+    end
+    
   end
   
 end

@@ -26,7 +26,8 @@ class CoverMe::Index
   def percent_tested
     unless @percent_tested
       executed_percent = self.reports.inject(0) {|sum, x| sum += x.executed_percent; sum}
-      @percent_tested = (executed_percent / self.reports.size.to_f).round(2)
+      @percent_tested = (executed_percent / self.reports.size.to_f)
+      @percent_tested = (@percent_tested.nan? ? 0 : @percent_tested.round(2))
     end
     return @percent_tested
   end
