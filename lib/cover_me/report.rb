@@ -23,8 +23,8 @@ class CoverMe::Report
   def proximity
     unless @proximity
       @proximity = 'miss'
-      @proximity = 'near' if self.executed_percent >= 90
-      @proximity = 'hit' if self.executed_percent >= 100
+      @proximity = 'near' if self.executed_percent >= CoverMe.config.proximity.near
+      @proximity = 'hit' if self.executed_percent >= CoverMe.config.proximity.hit
     end
     return @proximity
   end

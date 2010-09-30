@@ -21,11 +21,11 @@ class CoverMe::Processor
       if filename.match(self.options.pattern)
         report = CoverMe::Report.new(filename, coverage)
         self.index.reports << report
-        self.options.formatter.format(report)
+        self.options[:formatter].format(report)
       end
     end
-    self.options.formatter.format(self.index)
-    self.options.formatter.finalize
+    self.options[:formatter].format(self.index)
+    self.options[:formatter].finalize
   end
   
 end
