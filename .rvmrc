@@ -1,1 +1,1 @@
-rvm use ruby-1.9.2-rc2@cover_me
+rvm use 1.9.2@cover_me
