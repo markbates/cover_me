@@ -1,17 +1,5 @@
 require 'rails/generators/base'
 
-puts 'cover me generator!!'
-
-# class LayoutGenerator < Rails::Generators::Base
-#   def self.source_root
-#     @_cover_me_source_root ||= File.expand_path(File.join(File.dirname(__FILE__), 'templates'))
-#   end
-# 
-#   def generate_layout  
-#     copy_file "cover_me.rake", "lib/tasks/cover_me.rake"  
-#   end
-# end
-
 module CoverMe
   class InstallGenerator < Rails::Generators::Base #:nodoc:
     
