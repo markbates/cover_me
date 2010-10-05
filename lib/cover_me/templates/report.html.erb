@@ -1,8 +1,14 @@
 <html>
   <head>
     <title><%= report.filename %></title>
-    <link href="report.css?<%= rand %>" media="screen" rel="stylesheet" type="text/css" />
-    <script src="jquery.js?<%= rand %>"></script>
+    <%
+      root = CoverMe.config.project.root.split(File::SEPARATOR)
+      file = File.dirname(report.filename).split(File::SEPARATOR)
+      diff = file - root
+      rel  = (['..'] * diff.count).join(File::SEPARATOR)
+    %>
+    <link href="<%= File.join(rel, "report.css?#{rand}") %>" media="screen" rel="stylesheet" type="text/css" />
+    <script src='<%= File.join(rel, "jquery.js?#{rand}") %>'></script>
     <script>
       $(function() {
 
