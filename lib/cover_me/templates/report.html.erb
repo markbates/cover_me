@@ -1,8 +1,8 @@
 <html>
   <head>
     <title><%= report.filename %></title>
-    <link href="<%= File.join(CoverMe.config.project.root, 'coverage', "report.css?#{rand}") %>" media="screen" rel="stylesheet" type="text/css" />
-    <script src='<%= File.join(CoverMe.config.project.root, 'coverage', "jquery.js?#{rand}") %>'></script>
+    <link href="report.css?<%= rand %>" media="screen" rel="stylesheet" type="text/css" />
+    <script src="jquery.js?<%= rand %>"></script>
     <script>
       $(function() {
 
