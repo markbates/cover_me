@@ -83,10 +83,11 @@
         <th>Legend</th>
       </tr>
       <tr>
-        <td class='hit'>This file was tested 100%!</td>
+        <% hit = CoverMe.config.proximity.hit == 100 ? CoverMe.config.proximity.hit : ">#{CoverMe.config.proximity.hit}" %>
+        <td class='hit'>This file was tested <%= hit %>%!</td>
       </tr>
       <tr>
-        <td class='near'>This file was tested >90%!</td>
+        <td class='near'>This file was tested ><%= CoverMe.config.proximity.near %>%!</td>
       </tr>
       <tr>
         <td class='miss'>This file was not tested nearly enough!</td>
