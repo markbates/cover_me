@@ -13,17 +13,17 @@
       <coverage type="class, %" value="0%  (0/0)"/>
       <coverage type="method, %" value="0%  (0/0)"/>
       <coverage type="block, %" value="0%  (0/0)"/>
-      <coverage type="line, %" value="0%  (<%= global[0] %>/<%= global[1] %>)"/>
+      <coverage type="line, %" value="0%  (<%= global.lines_executed %>/<%= global.lines_of_code %>)"/>
 
-      <% reports_by_module.sort.each do |mod,(summary,reports)| %>
-      <package name="<%= mod.join('/') %>">
+      <% reports_by_dir.sort_by(&:name).each do |dir| %>
+      <package name="<%= dir.name %>">
         <coverage type="class, %" value="0%   (0/0)"/>
         <coverage type="method, %" value="0%   (0/0)"/>
         <coverage type="block, %" value="0%   (0/0)"/>
-        <coverage type="line, %" value="0%   (<%= summary[0] %>/<%= summary[1] %>)"/>
+        <coverage type="line, %" value="0%   (<%= dir.lines_executed %>/<%= dir.lines_of_code %>)"/>
 
-        <% reports.sort.each do |report| %>
-        <srcfile name="<%= report.filename.split(File::SEPARATOR).last %>">
+        <% dir.reports.sort.each do |report| %>
+        <srcfile name="<%= File.basename(report.filename) %>">
           <coverage type="class, %" value="0%   (0/0)"/>
           <coverage type="method, %" value="0%   (0/0)"/>
           <coverage type="block, %" value="0%   (0/0)"/>
