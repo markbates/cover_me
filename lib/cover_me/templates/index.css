@@ -23,6 +23,14 @@ a:visited {
   color: black;
 }
 
+.header {
+  cursor:pointer;
+}
+
+th.header:hover {
+  background-color:#666;
+}
+
 .headerSortUp:after {
   content: "\25BC";
 /*  margin-left: 1em;*/
