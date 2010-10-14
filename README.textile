@@ -35,7 +35,7 @@ h2. Use
 CoverMe is pretty easy to use, and has been tested with Ruby 1.9.2 and Rails 3. First, add CoverMe to your Gemfile:
 
 <pre><code>
-  gem 'cover_me', '>= 1.0.0.rc1', :group => :test
+  gem 'cover_me', '>= 1.0.0.rc2', :group => :test
 </code></pre>
 
 Now make sure to install the gem with Bundler:

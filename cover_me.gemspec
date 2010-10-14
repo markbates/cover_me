@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cover_me}
-  s.version = "1.0.0.rc1.20100930114022"
+  s.version = "1.0.0.rc2.20101014153652"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["markbates"]
-  s.date = %q{2010-09-30}
+  s.date = %q{2010-10-14}
   s.description = %q{CoverMe - Code Coverage for Ruby 1.9}
   s.email = %q{mark+cover_me@markbates.com}
   s.extra_rdoc_files = ["README", "LICENSE"]
