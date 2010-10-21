@@ -33,7 +33,7 @@ require File.expand_path(File.join(path, 'config'))
 
 CoverMe.set_defaults
 
-%w{index report formatter processor html_formatter results}.each do |file|
+%w{index report formatter processor html_formatter emma_formatter results directory_report global_report}.each do |file|
   require File.expand_path(File.join(path, file))
 end
 

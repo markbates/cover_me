@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- cover_me report -->
+
+<report>
+  <stats>
+    <packages value="42"/>
+    <classes value="42"/>
+    <methods value="42"/>
+    <srcfiles value="42"/>
+    <srclines value="42"/>
+  </stats>
+  <data>
+    <all name="all classes">
+      <coverage type="class, %" value="0%  (0/0)"/>
+      <coverage type="method, %" value="0%  (0/0)"/>
+      <coverage type="block, %" value="0%  (0/0)"/>
+      <coverage type="line, %" value="0%  (<%= global.lines_executed %>/<%= global.lines_of_code %>)"/>
+
+      <% reports_by_dir.sort_by(&:name).each do |dir| %>
+      <package name="<%= dir.name %>">
+        <coverage type="class, %" value="0%   (0/0)"/>
+        <coverage type="method, %" value="0%   (0/0)"/>
+        <coverage type="block, %" value="0%   (0/0)"/>
+        <coverage type="line, %" value="0%   (<%= dir.lines_executed %>/<%= dir.lines_of_code %>)"/>
+
+        <% dir.reports.sort.each do |report| %>
+        <srcfile name="<%= File.basename(report.filename) %>">
+          <coverage type="class, %" value="0%   (0/0)"/>
+          <coverage type="method, %" value="0%   (0/0)"/>
+          <coverage type="block, %" value="0%   (0/0)"/>
+          <coverage type="line, %" value="<%= report.executed_percent.to_i %>%   (<%= report.lines_executed %>/<%= report.lines_of_code %>)"/>
+        </srcfile>
+        <% end %>
+      </package>
+      <% end %>
+    </all>
+  </data>
+</report>

@@ -5,6 +5,7 @@ class CoverMe::Report
   attr_accessor :coverage
   attr_accessor :lines
   attr_accessor :lines_of_code
+  attr_accessor :lines_executed
   attr_accessor :executed_percent
   attr_accessor :unexecuted_percent
   
@@ -14,7 +15,8 @@ class CoverMe::Report
     self.coverage = coverage
     self.lines = self.coverage.size
     self.lines_of_code = self.coverage.reject{|x| x.nil?}.size
-    self.executed_percent = ((self.coverage.reject{|x| x.nil? || x < 1}.size.to_f / self.lines_of_code.to_f) * 100).round(1)
+    self.lines_executed = self.coverage.reject{|x| x.nil? || x < 1}.size
+    self.executed_percent = ((self.lines_executed.to_f / self.lines_of_code.to_f) * 100).round(1)
     self.unexecuted_percent = (100 - self.executed_percent).round(1)
   end
   

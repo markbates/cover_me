@@ -41,6 +41,7 @@ module CoverMe
         c.html_formatter.set_default(:output_path, Configatron::Delayed.new {File.join(CoverMe.config.project.root, 'coverage')})
         c.html_formatter.set_default(:finalizer_files, {'report.css' => 'report.css', 'index.css' => 'index.css', 
                                                         'jquery.js' => 'jquery.js', 'jquery.tablesorter.js' => 'jquery.tablesorter.js'})
+        c.emma_formatter.set_default(:output_path, Configatron::Delayed.new {File.join(CoverMe.config.project.root, 'coverage')})
       end
     end
     
