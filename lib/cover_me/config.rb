@@ -19,7 +19,8 @@ module CoverMe
     
     def set_defaults # :nodoc:
       CoverMe.config do |c|
-        c.project.set_default(:root, Configatron::Delayed.new {Rails.root.to_s})
+        c.project.set_default(:root,
+          Configatron::Delayed.new{defined?(Rails) ? Rails.root.to_s : Dir.pwd})
         c.results.set_default(:store, Configatron::Delayed.new {File.join(CoverMe.config.project.root, 'coverage.data')})
         c.set_default(:file_pattern, Configatron::Delayed.new do
           /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/ix
