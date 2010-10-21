@@ -3,8 +3,8 @@
     <title><%= report.filename %></title>
     <%
       root = CoverMe.config.project.root.split(File::SEPARATOR)
-      file = File.dirname(report.filename).split(File::SEPARATOR)
-      diff = file - root
+      file = File.dirname(report.original_filename).split(File::SEPARATOR)
+      diff = file[root.size..-1]
       rel  = (['..'] * diff.count).join(File::SEPARATOR)
     %>
     <link href="<%= File.join(rel, "report.css?#{rand}") %>" media="screen" rel="stylesheet" type="text/css" />
