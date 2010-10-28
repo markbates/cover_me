@@ -5,7 +5,7 @@ describe CoverMe::Processor do
   before(:each) do
     @formatter = CoverMe::HtmlFormatter.new
     @processor = CoverMe::Processor.new({
-      File.join(CoverMe.config.project.root, 'lib/bar.rb') => [1, 0, nil, 69, 10, nil, 3],
+      File.join(CoverMe.config.project.root, 'lib/foo/bar.rb') => [1, 0, nil, 69, 10, nil, 3],
       File.join(CoverMe.config.project.root, 'app/models/user.rb') => [0, 0, 20, 1, 0, nil, 30, nil, 12],
       File.join(CoverMe.config.project.root, 'other/foo.rb') => [1, 2, 3, 4]
     }, :formatter => @formatter)

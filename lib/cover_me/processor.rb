@@ -20,8 +20,10 @@ class CoverMe::Processor
     self.coverage_results.map do |filename, coverage|
       if filename.match(self.options.pattern)
         report = CoverMe::Report.new(filename, coverage)
-        self.index.reports << report
-        self.options[:formatter].format(report)
+        if report.exists?
+          self.index.reports << report
+          self.options[:formatter].format(report)
+        end
       end
     end
     self.options[:formatter].format(self.index)

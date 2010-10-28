@@ -45,6 +45,10 @@ class CoverMe::Report
     self.filename <=> other.filename
   end
   
+  def exists?
+    File.exists?(self.original_filename)
+  end
+  
   # Reads in the original file and returns an <code>Array</code>
   # representing the lines of that file.
   def source
