@@ -32,7 +32,7 @@ class CoverMe::HtmlFormatter < CoverMe::Formatter
   
   protected
   def write_file(filename, extension = '.html', &block) # :nodoc:
-    path = File.join(self.options.output_path, filename)
+    path = File.join(self.options[:output_path], filename)
     FileUtils.mkdir_p(File.dirname(path))
     File.open(path + extension, 'w', &block)
   end

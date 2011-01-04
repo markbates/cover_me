@@ -18,7 +18,7 @@ class CoverMe::Processor
   # details.
   def process!
     self.coverage_results.map do |filename, coverage|
-      if filename.match(self.options.pattern)
+      if filename.match(self.options[:pattern])
         report = CoverMe::Report.new(filename, coverage)
         if report.exists?
           self.index.reports << report
