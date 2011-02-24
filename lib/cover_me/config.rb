@@ -23,7 +23,7 @@ module CoverMe
           Configatron::Delayed.new{defined?(Rails) ? Rails.root.to_s : Dir.pwd})
         c.results.set_default(:store, Configatron::Delayed.new {File.join(CoverMe.config.project.root, 'coverage.data')})
         c.set_default(:file_pattern, Configatron::Delayed.new do
-          /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/ix
+          /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/i
         end)
         
         c.proximity.set_default(:near, 90)
