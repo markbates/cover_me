@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cover_me}
-  s.version = "1.0.0.rc5.20110105101851"
+  s.version = "1.0.0.rc6.20110224124850"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["markbates"]
-  s.date = %q{2011-01-05}
+  s.date = %q{2011-02-24}
   s.description = %q{CoverMe - Code Coverage for Ruby 1.9}
   s.email = %q{mark+cover_me@markbates.com}
   s.extra_rdoc_files = ["README", "LICENSE"]
@@ -31,11 +31,10 @@ This will install a Rake task to wrap your tests in CoverMe.
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.9.2")
   s.rubyforge_project = %q{magrathea}
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.5.0}
   s.summary = %q{CoverMe - Code Coverage for Ruby 1.9}
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
