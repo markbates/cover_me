@@ -90,6 +90,7 @@ CoverMe is easily configurable, under the covers it uses the "Configatron":http:
 h2. Contributors
 
 * Mark Bates
+* Leif Bladt
 * Alex Crichton
 * Andrea Campi
 * Rob Zolkos
