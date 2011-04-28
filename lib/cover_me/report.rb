@@ -16,7 +16,12 @@ class CoverMe::Report
     self.lines = self.coverage.size
     self.lines_of_code = self.coverage.reject{|x| x.nil?}.size
     self.lines_executed = self.coverage.reject{|x| x.nil? || x < 1}.size
-    self.executed_percent = ((self.lines_executed.to_f / self.lines_of_code.to_f) * 100).round(1)
+
+    # Handling 0.0% coverage on files without divide-by-0 bugs
+    ratio  = (self.lines_executed.to_f / self.lines_of_code.to_f)
+    ratio = ratio.nan? ? 0.0 : ratio
+    self.executed_percent = (ratio * 100).round(1)
+
     self.unexecuted_percent = (100 - self.executed_percent).round(1)
   end
   
