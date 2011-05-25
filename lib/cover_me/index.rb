@@ -21,7 +21,15 @@ class CoverMe::Index
     end
     return @total_loc
   end
-  
+
+  # Returns the total number of untested lines of code across all files.
+  def total_untested_loc
+    unless @total_untested_loc
+      @total_untested_loc = self.reports.inject(0) {|sum, x| sum += (x.lines_of_code - x.lines_executed); sum}
+    end
+    return @total_untested_loc
+  end
+
   # Returns an average percent across all files.
   def percent_tested
     unless @percent_tested
