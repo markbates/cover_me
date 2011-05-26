@@ -52,6 +52,7 @@
         <th>File</th>
         <th>Lines</th>
         <th>Lines Of Code</th>
+        <th>Untested Lines of Code</th>
         <th>Tested %</th>
       </tr>
       <tr valign='top'>
@@ -64,6 +65,7 @@
         </td>
         <td><%= report.lines %></td>
         <td><%= report.lines_of_code %></td>
+        <td><%= report.lines_of_code - report.lines_executed %></td>
         <td><%= report.executed_percent %>%</td>
       </tr>
     </table>

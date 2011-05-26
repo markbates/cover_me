@@ -102,6 +102,7 @@
           <th>File</th>
           <th>Lines</th>
           <th>Lines Of Code</th>
+          <th>Untested Lines of Code</th>
           <th>Tested %</th>
         </tr>
       </thead>
@@ -119,6 +120,9 @@
               <%= report.lines_of_code %>
             </td>
             <td>
+              <%= report.lines_of_code - report.lines_executed %>
+            </td>
+            <td>
               <%= report.executed_percent %>%
             </td>
           </tr>
@@ -129,6 +133,7 @@
         <th>Total</th>
         <th><%= index.total_lines %></th>
         <th><%= index.total_loc %></th>
+        <th><%= index.total_untested_loc %></th>
         <th><%= index.percent_tested %>%</th>
       </tr>
     </table>
