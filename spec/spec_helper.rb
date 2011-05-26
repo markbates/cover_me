@@ -9,7 +9,7 @@ end
 
 CoverMe.config.project.root = File.join(File.dirname(__FILE__), '..', 'fake_project')
 
-Rspec.configure do |config|
+RSpec.configure do |config|
   
   config.before(:all) do
     

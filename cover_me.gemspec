@@ -2,15 +2,15 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cover_me}
-  s.version = "1.0.0.rc6.20110224124850"
+  s.version = "1.0.0.20110525205338"
 
-  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
-  s.authors = ["markbates"]
-  s.date = %q{2011-02-24}
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.authors = [%q{markbates}]
+  s.date = %q{2011-05-26}
   s.description = %q{CoverMe - Code Coverage for Ruby 1.9}
   s.email = %q{mark+cover_me@markbates.com}
-  s.extra_rdoc_files = ["README", "LICENSE"]
-  s.files = ["lib/cover_me/config.rb", "lib/cover_me/directory_report.rb", "lib/cover_me/emma_formatter.rb", "lib/cover_me/formatter.rb", "lib/cover_me/global_report.rb", "lib/cover_me/hash.rb", "lib/cover_me/html_formatter.rb", "lib/cover_me/index.rb", "lib/cover_me/processor.rb", "lib/cover_me/report.rb", "lib/cover_me/results.rb", "lib/cover_me/templates/emma.xml.erb", "lib/cover_me/templates/index.css", "lib/cover_me/templates/index.html.erb", "lib/cover_me/templates/jquery.js", "lib/cover_me/templates/jquery.tablesorter.js", "lib/cover_me/templates/report.css", "lib/cover_me/templates/report.html.erb", "lib/cover_me.rb", "lib/generators/cover_me/install/install_generator.rb", "lib/generators/cover_me/install/templates/cover_me.rake", "README", "LICENSE"]
+  s.extra_rdoc_files = [%q{LICENSE}]
+  s.files = [%q{lib/cover_me/config.rb}, %q{lib/cover_me/directory_report.rb}, %q{lib/cover_me/emma_formatter.rb}, %q{lib/cover_me/formatter.rb}, %q{lib/cover_me/global_report.rb}, %q{lib/cover_me/hash.rb}, %q{lib/cover_me/html_formatter.rb}, %q{lib/cover_me/index.rb}, %q{lib/cover_me/processor.rb}, %q{lib/cover_me/report.rb}, %q{lib/cover_me/results.rb}, %q{lib/cover_me/templates/emma.xml.erb}, %q{lib/cover_me/templates/index.css}, %q{lib/cover_me/templates/index.html.erb}, %q{lib/cover_me/templates/jquery.js}, %q{lib/cover_me/templates/jquery.tablesorter.js}, %q{lib/cover_me/templates/report.css}, %q{lib/cover_me/templates/report.html.erb}, %q{lib/cover_me.rb}, %q{lib/generators/cover_me/install/install_generator.rb}, %q{lib/generators/cover_me/install/templates/cover_me.rake}, %q{LICENSE}]
   s.homepage = %q{http://www.metabates.com}
   s.post_install_message = %q{Thank you for installing CoverMe!
 
@@ -28,10 +28,10 @@ $ rails g cover_me:install
 
 This will install a Rake task to wrap your tests in CoverMe.
 }
-  s.require_paths = ["lib"]
+  s.require_paths = [%q{lib}]
   s.required_ruby_version = Gem::Requirement.new(">= 1.9.2")
   s.rubyforge_project = %q{magrathea}
-  s.rubygems_version = %q{1.5.0}
+  s.rubygems_version = %q{1.8.2}
   s.summary = %q{CoverMe - Code Coverage for Ruby 1.9}
 
   if s.respond_to? :specification_version then

@@ -9,6 +9,7 @@ describe CoverMe::HtmlFormatter do
   describe "format_report" do
     
     it "should generate HTML for a report" do
+      puts "CoverMe.config.html_formatter.output_path: #{CoverMe.config.html_formatter.output_path}"
       report = CoverMe::Report.new(File.join(CoverMe.config.project.root, 'app', 'models', 'user.rb'), [1])
       @formatter.format(report)
       File.exists?(File.join(CoverMe.config.html_formatter.output_path, 'app', 'models', 'user.rb.html')).should be_true
