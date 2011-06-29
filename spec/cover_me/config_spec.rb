@@ -25,9 +25,10 @@ describe CoverMe do
     describe "file_pattern" do
       
       it "should define a default file pattern to match" do
-        File.join(CoverMe.config.project.root, 'lib/bar.rb').should match(CoverMe.config.file_pattern)
-        File.join(CoverMe.config.project.root, 'app/models/user.rb').should match(CoverMe.config.file_pattern)
-        File.join(CoverMe.config.project.root, 'other/foo.rb').should_not match(CoverMe.config.file_pattern)
+        File.join(CoverMe.config.project.root, 'lib/bar.rb').should match(CoverMe.config.file_pattern.last)
+        File.join(CoverMe.config.project.root, 'app/models/user.rb').should match(CoverMe.config.file_pattern.first)
+        File.join(CoverMe.config.project.root, 'other/foo.rb').should_not match(CoverMe.config.file_pattern.first)
+        File.join(CoverMe.config.project.root, 'other/foo.rb').should_not match(CoverMe.config.file_pattern.last)
       end
       
     end

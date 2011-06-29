@@ -113,18 +113,10 @@
             <td>
               <a href="<%= report.filename + '.html' %>"><%= report.filename %></a>
             </td>
-            <td>
-              <%= report.lines %>
-            </td>
-            <td>
-              <%= report.lines_of_code %>
-            </td>
-            <td>
-              <%= report.lines_of_code - report.lines_executed %>
-            </td>
-            <td>
-              <%= report.executed_percent %>%
-            </td>
+            <td><%= report.lines %></td>
+            <td><%= report.lines_of_code %></td>
+            <td><%= report.lines_of_code - report.lines_executed %></td>
+            <td><%= report.executed_percent %>%</td>
           </tr>
         <% end %>
       </tbody>

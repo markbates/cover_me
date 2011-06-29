@@ -7,9 +7,12 @@ class CoverMe::Processor
   
   def initialize(coverage_results, options = {}) # :nodoc:
     self.coverage_results = coverage_results
-    self.options = ({:pattern => CoverMe.config.file_pattern,
+    self.options = ({:patterns => CoverMe.config.file_pattern,
+                     :exclude_patterns => CoverMe.config.exclude_file_patterns,
                      :formatter => CoverMe.config.formatter.new}.merge(options)).to_mash
     self.index = CoverMe::Index.new
+    self.options[:patterns] = [self.options[:patterns]].flatten
+    self.options[:exclude_patterns] = [self.options[:exclude_patterns]].flatten
   end
   
   # Processes the coverage results and then formats them.
@@ -18,11 +21,23 @@ class CoverMe::Processor
   # details.
   def process!
     self.coverage_results.map do |filename, coverage|
-      if filename.match(self.options[:pattern])
-        report = CoverMe::Report.new(filename, coverage)
-        if report.exists?
-          self.index.reports << report
-          self.options[:formatter].format(report)
+      # next unless filename.match(/#{CoverMe.config.project.root}/)
+      exclude = false
+      self.options[:exclude_patterns].each do |pattern|
+        if filename.match(pattern)
+          exclude = true
+          break
+        end
+      end
+      next if exclude
+      self.options[:patterns].each do |pattern|
+        if filename.match(pattern)
+          report = CoverMe::Report.new(filename, coverage)
+          if report.exists?
+            self.index.reports << report
+            self.options[:formatter].format(report)
+          end
+          break
         end
       end
     end

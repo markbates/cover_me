@@ -70,7 +70,13 @@ CoverMe is easily configurable, under the covers it uses the "Configatron":http:
     c.project.root # => "Rails.root" (default)
   
     # what files are you interested in coverage for:
-    c.file_pattern # => /(#{CoverMe.config.project.root}\/app\/.+\.rb|#{CoverMe.config.project.root}\/lib\/.+\.rb)/i (default)
+    c.file_pattern # => [
+      /(#{CoverMe.config.project.root}\/app\/.+\.rb)/i,
+      /(#{CoverMe.config.project.root}\/lib\/.+\.rb)/i
+    ] (default)
+    
+    # what files do you want to explicitly exclude from coverage
+    c.exclude_file_patterns # => [] (default)
   
     # where do you want the HTML generated:
     c.html_formatter.output_path # => File.join(CoverMe.config.project.root, 'coverage') (default)
