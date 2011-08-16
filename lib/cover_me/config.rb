@@ -40,7 +40,15 @@ module CoverMe
           if CoverMe.config.formatter == CoverMe::HtmlFormatter
             index = File.join(CoverMe.config.html_formatter.output_path, 'index.html')
             if File.exists?(index)
-              `open #{index}`
+              cmd = case RUBY_PLATFORM
+                    when /darwin/
+                      'open'
+                    when /linux/
+                      '/etc/alternatives/x-www-browser'
+                    else
+                      'firefox'
+                    end
+              `#{cmd} #{index}`
             end
           end
         })
