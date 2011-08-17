@@ -45,6 +45,10 @@ module CoverMe
                       'open'
                     when /linux/
                       '/etc/alternatives/x-www-browser'
+                    when /mswin|mingw/
+                      'start'
+                    when /cygwin/
+                      'cygstart'
                     else
                       'firefox'
                     end
