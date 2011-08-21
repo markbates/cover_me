@@ -33,13 +33,15 @@ class CoverMe::Formatter
   
   # Returns an ERB object based on the template file requested.
   # Template files are expected to live in the _templates_ directory.
+  # Can receive trim_mode of ERB as second argument.
   # 
   # Example:
   #   template('index.html.erb') # => ERB object
+  #   templaet('console.erb', '-') # => ERB object with trim_mode "-"
   # 
   # The ERB object return still needs to be bound and processed.
-  def template(file)
-    ERB.new(File.read(File.join(File.dirname(__FILE__), 'templates', file)))
+  def template(file, trim_mode = nil)
+    ERB.new(File.read(File.join(File.dirname(__FILE__), 'templates', file)), nil, trim_mode)
   end
   
 end

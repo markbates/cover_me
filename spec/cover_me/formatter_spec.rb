@@ -21,6 +21,10 @@ describe CoverMe::Formatter do
       @formatter.template('index.html.erb').should be_kind_of(ERB)
     end
     
+    it "should receive trim_mode as second argument" do
+      lambda {@formatter.template('console.erb', '-')}.should_not raise_error
+    end
+    
   end
   
 end
