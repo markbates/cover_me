@@ -99,6 +99,7 @@ h2. Contributors
 * Leif Bladt
 * Alex Crichton
 * Andrea Campi
-* Rob Zolkos
+* Stephen Delano
 * jmthomas
 * Lasse Koskela
+* Rob Zolkos
