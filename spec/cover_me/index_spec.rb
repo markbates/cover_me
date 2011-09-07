@@ -24,10 +24,18 @@ describe CoverMe::Index do
     
   end
 
+  describe "total_untested_loc" do
+
+    it "should sum up the total untested executable lines of code" do
+      @index.total_untested_loc.should == 2
+    end
+
+  end
+
   describe "percent_tested" do
     
-    it "should return an average percent tested" do
-      @index.percent_tested.should == 79.15
+    it "should return the total percent tested" do
+      @index.percent_tested.should == 80.0
     end
     
     it "should handle when there are no reports" do
