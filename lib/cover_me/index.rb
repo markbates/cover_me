@@ -33,8 +33,7 @@ class CoverMe::Index
   # Returns an average percent across all files.
   def percent_tested
     unless @percent_tested
-      executed_percent = self.reports.inject(0) {|sum, x| sum += x.executed_percent; sum}
-      @percent_tested = (executed_percent / self.reports.size.to_f)
+      @percent_tested = (total_loc - total_untested_loc).to_f / (total_loc).to_f * 100
       @percent_tested = (@percent_tested.nan? ? 0 : @percent_tested.round(2))
     end
     return @percent_tested
