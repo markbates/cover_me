@@ -102,8 +102,9 @@ h2. Contributors
 * Leif Bladt
 * Will Marshall
 * Matthew Albright
-* Lasse Koskela
 * Josef Sin
+* Lasse Koskela
 * Stephen Delano
+* George Anderson
 * Rob Zolkos
 * jmthomas
