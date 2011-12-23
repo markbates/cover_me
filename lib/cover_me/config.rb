@@ -1,22 +1,22 @@
 module CoverMe
-  
+
   class << self
-    
-    # Yields up a configuration object when given a block. 
+
+    # Yields up a configuration object when given a block.
     # Without a block it just returns the configuration object.
     # Uses Configatron under the covers.
-    # 
+    #
     # Example:
     #   CoverMe.config do |c|
     #     c.foo = :bar
     #   end
-    # 
+    #
     #   CoverMe.config.foo # => :bar
     def config(&block)
       yield configatron.cover_me if block_given?
       configatron.cover_me
     end
-    
+
     def set_defaults # :nodoc:
       CoverMe.config do |c|
         c.project.set_default(:root,
@@ -31,10 +31,10 @@ module CoverMe
         c.set_default(:exclude_file_patterns, Configatron::Delayed.new do
           []
         end)
-        
+
         c.proximity.set_default(:near, 90)
         c.proximity.set_default(:hit, 100)
-        
+
         c.set_default(:formatter, Configatron::Delayed.new {CoverMe::HtmlFormatter})
         c.set_default(:at_exit, Proc.new {
           if CoverMe.config.formatter == CoverMe::HtmlFormatter
@@ -44,7 +44,7 @@ module CoverMe
                     when /darwin/
                       'open'
                     when /linux/
-                      '/etc/alternatives/x-www-browser'
+                      'xdg-open'
                     when /mswin|mingw/
                       'start'
                     when /cygwin/
