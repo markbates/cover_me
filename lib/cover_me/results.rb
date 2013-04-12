@@ -6,7 +6,11 @@ module CoverMe
       def read_results(path = CoverMe.config.results.store)
         data = {}
         if File.exists?(path)
-          data = eval(File.read(path)) || {}
+          begin
+            data = eval(File.read(path)) || {}
+          rescue SyntaxError
+            data = {}
+          end
         end
         return data
       end
@@ -30,11 +34,11 @@ module CoverMe
             data[file] = results
           end
         end
-
+        
         File.open(path, 'w') do |f|
           f.write(data.inspect)
         end
-        
+
         return data
       end
       

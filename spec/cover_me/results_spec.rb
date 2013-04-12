@@ -31,7 +31,14 @@ describe CoverMe::Results do
       res.should be_kind_of(Hash)
       res.should be_empty
     end
-    
+
+    it "should return empty results if reading the file fails with a Syntax error" do
+      File.stub!(:read).and_return('{garbage}')
+      res = CoverMe::Results.read_results
+      res.should be_kind_of(Hash)
+      res.should be_empty
+    end
+
   end
   
   describe "merge_results!" do
@@ -55,7 +62,7 @@ describe CoverMe::Results do
       res.should == @more_results
       File.read(@idontexist_path).should == res.inspect
     end
-    
+
   end
   
 end
