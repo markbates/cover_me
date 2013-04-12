@@ -6,7 +6,12 @@ module CoverMe
       def read_results(path = CoverMe.config.results.store)
         data = {}
         if File.exists?(path)
-          data = eval(File.read(path)) || {}
+          data = File.read(path, {:encoding => 'ASCII-8BIT', :mode => 'r'})
+          begin
+            data = Marshal.load(data)
+          rescue
+            data = {}
+          end
         end
         return data
       end
@@ -31,10 +36,11 @@ module CoverMe
           end
         end
 
-        File.open(path, 'w') do |f|
-          f.write(data.inspect)
+        File.open(path, {:encoding => 'ASCII-8BIT', :mode => 'w'}) do |f|
+          data = Marshal.dump(data)
+          f.write(data)
         end
-        
+
         return data
       end
       
